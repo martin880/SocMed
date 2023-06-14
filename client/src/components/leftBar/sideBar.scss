@@ -1,0 +1,17 @@
+@import "../../style.scss";
+
+.leftBar {
+  @include themify($themes) {
+    height: calc(100vh - 70px);
+    background-color: themed("bg");
+    color: themed("textColor");
+
+    @include mobile{
+      display: none;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
