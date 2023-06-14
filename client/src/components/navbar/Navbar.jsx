@@ -1,6 +1,6 @@
 import HouseIcon from '@mui/icons-material/House';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import WbSunnyIcon from '@mui/icons-material/WbSunny';
+// import DarkModeIcon from '@mui/icons-material/DarkMode';
+// import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import WidgetsIcon from '@mui/icons-material/Widgets';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import EmailIcon from '@mui/icons-material/Email';
@@ -8,12 +8,12 @@ import PersonIcon from '@mui/icons-material/Person';
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { DarkModeContext } from "../../context/darkModeContext";
+// import { DarkModeContext } from "../../context/darkModeContext";
 import { AuthContext } from "../../context/authContext";
 import {Flex, Image, Input, Text} from "@chakra-ui/react";
 
 const Navbar = () => {
-  const { toggle, darkMode } = useContext(DarkModeContext);
+  // const { toggle, darkMode } = useContext(DarkModeContext);
   const { currentUser } = useContext(AuthContext);
 
   return (
@@ -26,23 +26,23 @@ const Navbar = () => {
             <span style={{fontWeight:"bold",fontSize:"20px",color:"darkblue"}}>Martin Media</span>
           </Link>
           <HouseIcon />
-          {darkMode ? (
+          {/* {darkMode ? (
             <WbSunnyIcon onClick={toggle} />
           ) : (
-            <DarkModeIcon onClick={toggle} />
-          )}
+            <DarkModeIcon />
+          )} */}
           <WidgetsIcon />
           {/* search bar */}
-          <Flex display={'flex'} alignItems={'center'} gap={'10px'} border={'1px solid gray.600'}
+          <Flex display={'flex'} alignItems={'center'} justifyContent={'center'} gap={'20px'} border={'1px solid gray.600'}
           borderRadius={'5px'} p={'5px'}>
             <SearchOutlinedIcon />
-            <Input type="text" placeholder="Search..." border={'none'}
+            <Input type="text" placeholder="Search..." border={'none'} alignItems={'center'} justifyContent={'center'}
             w={{base:'50%', md:'500px', sm:'75%'}} bgColor={'transparent'}
-            textColor={'black'}/>
+            textColor={'gray.600'}/>
           </Flex>
         </Flex>
         {/* rigth */}
-        <Flex display={{base:"flex", md:"flex-end", sm:"flex-end"}} alignItems={'center'} gap={'10px'}>
+        <Flex display={{base:"flex", md:"flex-end", sm:"flex-end"}} alignItems={'center'} gap={'20px'}>
           <PersonIcon />
           <EmailIcon />
           <NotificationsActiveIcon />
