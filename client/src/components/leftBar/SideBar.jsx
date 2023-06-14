@@ -21,9 +21,9 @@ const SideBar = () => {
   const { currentUser } = useContext(AuthContext);
 
   return (
-        <Flex className="leftBar" flex={'2'} position={'sticky'} top={'70px'}
+        <Flex className="leftBar" flex={'2'} position={'sticky'} top={'50px'} bottom={'50px'}
         overflow={'scroll'} bgColor={'gray.300'} color={'blackAlpha.600'}>
-            <Flex p={'20px'}>
+        <Flex p={'20px'}>
           <Stack>
             <VStack>
             <Flex display={'flex'} flexDir={'column'} gap={'20px'}>
@@ -33,7 +33,7 @@ const SideBar = () => {
                   alt=""
                   w={'30px'} h={'30px'} borderRadius={'50%'} objectFit={'cover'}
                 />
-                <span style={{fontSize:"14px"}}>{currentUser.name}</span>
+                <span style={{fontSize:"14px", fontFamily:"sans-serif", color:"slategrey"}}>{currentUser.name}</span>
               </Flex>
               <Flex display={'flex'} alignItems={'center'} gap={'10px'}>
                 <Image src={Friends} alt="" w={'30px'}/>

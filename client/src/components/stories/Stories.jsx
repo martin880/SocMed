@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import "./stories.scss"
-import { AuthContext } from "../../context/authContext"
+import { Button, Flex, Image } from "@chakra-ui/react";
+import { AuthContext } from "../../context/authContext";
 
 const Stories = () => {
 
@@ -31,19 +31,21 @@ const Stories = () => {
   ];
 
   return (
-    <div className="stories">
-      <div className="story">
-          <img src={currentUser.profilePic} alt="" />
-          <span>{currentUser.name}</span>
-          <button>+</button>
-        </div>
+    <Flex display={'flex'} gap={'10px'} h={'200px'} marginBottom={'30px'}>
+      <Flex flex={'1'} borderRadius={'10px'} overflow={'hidden'} position={'relative'}>
+          <Image src={currentUser.profilePic} alt="" w={'100%'} h={'100%'} objectFit={'cover'} />
+          <span style={{position:"absolute",bottom:'10px',left:"10px",color:"white",fontWeight:"normal"}}>{currentUser.name}</span>
+          <Button size={'sm'} pos={'absolute'} bottom={'40px'} left={'10px'} color={'white'} colorScheme={'messenger'}
+          border={'none'} borderRadius={'50%'} w={'20px'} cursor={'pointer'}
+          fontSize={'30px'} display={'flex'} alignItems={'center'} justifyContent={'center'}>+</Button>
+        </Flex>
       {stories.map(story=>(
-        <div className="story" key={story.id}>
-          <img src={story.img} alt="" />
-          <span>{story.name}</span>
-        </div>
+        <Flex flex={'1'} borderRadius={'10px'} overflow={'hidden'} position={'relative'} key={story.id}>
+          <Image src={story.img} alt="" w={'100%'} h={'100%'} objectFit={'cover'}/>
+          <span style={{position:"absolute",bottom:'10px',left:"10px",color:"white",fontWeight:"normal"}}>{story.name}</span>
+        </Flex>
       ))}
-    </div>
+    </Flex>
   )
 }
 
