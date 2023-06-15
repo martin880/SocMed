@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
-// import "./login.scss";
 import {Box, Button, Flex, HStack, Heading, Input, Spacer, Stack, Text} from "@chakra-ui/react";
 
 const Login = () => {
@@ -18,7 +17,7 @@ const Login = () => {
       <Stack>
         <HStack display={'flex'} justifyContent={'center'} alignItems={'center'}>
       {/* card */}
-      <Box w={{base:"50%", md:"75%", sm:"100%"}} display={'flex'} m={2} boxShadow={'lg'}
+      <Box w={{base:"50%", md:"75%", sm:"100%"}} display={'flex'} m={2} boxShadow={'dark-lg'}
       bgColor={'white'} borderRadius={'10px'} minH={'500px'} overflow={'hidden'}>
         {/* Left */}
             <Box flex={'1'} bgImage={"https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"}
