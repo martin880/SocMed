@@ -31,7 +31,7 @@ const Stories = () => {
   ];
 
   return (
-    <Flex display={'flex'} gap={'10px'} h={'200px'} marginBottom={'30px'}>
+    <Flex display={'flex'} gap={'10px'} h={'180px'} marginBottom={'30px'}>
       <Flex flex={'1'} borderRadius={'10px'} overflow={'hidden'} position={'relative'}>
           <Image src={currentUser.profilePic} alt="" w={'100%'} h={'100%'} objectFit={'cover'} />
           <span style={{position:"absolute",bottom:'10px',left:"10px",color:"white",fontWeight:"normal"}}>{currentUser.name}</span>
