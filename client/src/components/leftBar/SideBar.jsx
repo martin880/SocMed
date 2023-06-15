@@ -1,5 +1,5 @@
 import "./sideBar.scss";
-import Friends from "../../assets/friends.png";
+import Friends from "../../assets/diversity.png";
 import Groups from "../../assets/teamwork.png";
 import Market from "../../assets/retail.png";
 import Watch from "../../assets/multimedia.png";

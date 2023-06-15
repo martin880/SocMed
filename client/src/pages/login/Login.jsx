@@ -1,14 +1,51 @@
+import { useState } from "react";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
-import {Box, Button, Flex, HStack, Heading, Input, Spacer, Stack, Text} from "@chakra-ui/react";
+import {Box, Button, Flex, HStack, Heading, Input, Spacer, Stack, Text, useToast} from "@chakra-ui/react";
 
 const Login = () => {
+  const [inputs, setInputs] = useState({
+    username:"",
+    password:""
+  });
+
+  const [error, setError] = useState(null);
+
+  const toast = useToast();
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setInputs((prev) => ({...prev, [e.target.name] : e.target.value}));
+  };
   const { login } = useContext(AuthContext);
 
-  const handleLogin = () => {
-    login();
+  const handleLogin = async (e) => {
+    e.preventDefault()
+    try {
+      await login(inputs);
+      navigate("/");
+      toast({
+        title:"Login Success",
+        status:"success",
+        duration:4000,
+        isClosable:false,
+        position:"top"
+      }) 
+    } catch (error) {
+      setError(error.response.data);
+      toast({
+        title:"Incorrect username or password !!!",
+        status:"error",
+        duration:4000,
+        isClosable:false,
+        position:"top"
+      })
+    }
   };
+
+  console.log(error);
 
   return (
     // login
@@ -36,8 +73,8 @@ const Login = () => {
             flexDir={'column'} gap={'50px'} justifyContent={'center'} bgImage={'https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'}>
               <Heading display={'flex'} alignItems={'center'} justifyContent={'center'} color={'white'}>Login</Heading>
               <form style={{display:"flex", flexDirection:"column", gap:"30px"}}>
-                <Input type="text" placeholder="Username" color={'white'} variant={'flushed'} />
-                <Input type="password" placeholder="Password" color={'white'} variant={'flushed'} />
+                <Input type="text" placeholder="Username" color={'white'} variant={'flushed'} name="username" onChange={handleChange}/>
+                <Input type="password" placeholder="Password" color={'white'} variant={'flushed'} name="password" onChange={handleChange}/>
                 <Spacer p={12}/>
                 <Button colorScheme="whatsapp" cursor={'pointer'} onClick={handleLogin}>Login</Button>
               </form>
