@@ -59,7 +59,7 @@ const Post = ({ post }) => {
             Share
           </Flex>
         </Flex>
-        {commentOpen && <Comments />}
+        {commentOpen && <Comments postId={post.id} />}
         </Stack>
       </Flex>
     </Flex>

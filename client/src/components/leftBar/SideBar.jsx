@@ -1,4 +1,3 @@
-import "./sideBar.scss";
 import Friends from "../../assets/diversity.png";
 import Groups from "../../assets/teamwork.png";
 import Market from "../../assets/retail.png";
@@ -21,8 +20,9 @@ const SideBar = () => {
   const { currentUser } = useContext(AuthContext);
 
   return (
-        <Flex className="leftBar" flex={'2'} position={'sticky'} top={'50px'} bottom={'50px'}
-        overflow={'scroll'} bgColor={'gray.300'} color={'blackAlpha.600'}>
+        <Flex flex={'2'} position={'sticky'} top={'50px'} bottom={'50px'}
+        overflow={'scroll'} overflowY={'scroll'} sx={{"&::-webkit-scrollbar": { display: "none" }}} 
+        bgColor={'#222'} color={'lightgray'} h="calc(100vh - 50px)">
         <Flex p={'20px'}>
           <Stack>
             <VStack>
@@ -53,7 +53,7 @@ const SideBar = () => {
               </Flex>    
             </Flex>
             <hr style={{mt:"20px", border:"none", height:"0.5px", backgroundColor:"gray"}}/>
-            <Flex className="menu" display={'flex'} flexDir={'column'} gap={'20px'}>
+            <Flex display={'flex'} flexDir={'column'} gap={'20px'}>
               <span style={{fontSize:"14px", fontFamily:"sans-serif", fontWeight:"bold"}}>Your shortcuts</span>
               <Flex display={'flex'} alignItems={'center'} gap={'10px'}>
                 <Image src={Events} alt="" w={'30px'}/>
@@ -81,7 +81,7 @@ const SideBar = () => {
               </Flex>
             </Flex>
             <hr style={{mt:"20px", border:"none", height:"0.5px", backgroundColor:"gray"}}/>
-            <Flex className="menu" display={'flex'} flexDir={'column'} gap={'20px'}>
+            <Flex display={'flex'} flexDir={'column'} gap={'20px'}>
               <span style={{fontSize:"14px",fontFamily:"sans-serif", fontWeight:"bold"}}>Others</span>
               <Flex display={'flex'} alignItems={'center'} gap={'10px'}>
                 <Image src={Donations} alt="" w={'30px'}/>

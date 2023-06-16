@@ -1,46 +1,59 @@
-import { useContext } from "react";
-import "./comments.scss";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
+import { useQuery,useMutation, useQueryClient } from 'react-query';
+import { makeRequest } from "../../axios";
+import moment from "moment";
+import { Box, Button, Flex, Image, Input, Text } from "@chakra-ui/react";
 
-const Comments = () => {
+const Comments = ({postId}) => {
+
+  const [desc, setDesc] = useState("");
+
   const { currentUser } = useContext(AuthContext);
-  //Temporary
-  const comments = [
-    {
-      id: 1,
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem nequeaspernatur ullam aperiam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem nequeaspernatur ullam aperiam",
-      name: "John Doe",
-      userId: 1,
-      profilePicture:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+  
+  const { isLoading, error, data } = useQuery('comments', () =>
+      makeRequest.get("/comments?postId=" + postId).then((res) => {
+        return res.data;
+      })
+  );
+
+  const queryClient = useQueryClient();
+  
+  const mutation = useMutation((newComment) => {
+    return makeRequest.post("/comments", newComment);
+  }, {
+    onSuccess: () => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries(['comments']);
     },
-    {
-      id: 2,
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem nequeaspernatur ullam aperiam",
-      name: "Jane Doe",
-      userId: 2,
-      profilePicture:
-        "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    },
-  ];
+  });
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    mutation.mutate({desc, postId});
+    setDesc("");
+  };
   return (
-    <div className="comments">
-      <div className="write">
-        <img src={currentUser.profilePic} alt="" />
-        <input type="text" placeholder="write a comment" />
-        <button>Send</button>
-      </div>
-      {comments.map((comment) => (
-        <div className="comment">
-          <img src={comment.profilePicture} alt="" />
-          <div className="info">
-            <span>{comment.name}</span>
-            <p>{comment.desc}</p>
-          </div>
-          <span className="date">1 hour ago</span>
-        </div>
+    <Box className="comments">
+      <Flex className="write" display={'flex'} alignItems={'center'} justifyContent={'space-between'}
+      gap={'20px'} m={'20px'}>
+        <Image src={currentUser.profilePic} alt="" w={'40px'} h={'40px'} borderRadius={'50%'} objectFit={'cover'} />
+        <Input type="text" placeholder="write a comment" flex={'5'} p={'10px'} border={'1px solid gray'} bgColor={'transparent'} color={'lightgray'}
+         value={desc} onChange={(e) => setDesc(e.target.value)}/>
+        <Button border={'none'} bgColor={'lightblue'} color={'white'} 
+        p={'10px'} cursor={'pointer'} borderRadius={'3px'} onClick={handleClick}>Send</Button>
+      </Flex>
+      {isLoading ? "loading" : data.map((comment) => (
+        <Flex className="comment" m={'30px 0px'} display={'flex'} justifyContent={'space-between'} gap={'20px'}>
+          <Image src={comment.profilePic} alt="" w={'40px'} h={'40px'} borderRadius={'50%'} objectFit={'cover'} />
+          <Flex className="info" flex={'5'} display={'flex'} flexDir={'column'} gap={'3px'} alignItems={'flex-start'}>
+            <span style={{fontWeight:"normal"}}>{comment.name}</span>
+            <Text as={'p'} color={'lightgray'}>{comment.desc}</Text>
+          </Flex>
+          <span className="date" style={{flex:"1", alignSelf:"center", color:"gray",fontSize:"12px"}}>{moment(comment.createdAt).fromNow()}</span>
+        </Flex>
       ))}
-    </div>
+    </Box>
   );
 };
 
