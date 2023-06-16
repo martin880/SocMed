@@ -16,24 +16,32 @@ import "./style.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/authContext";
+import { QueryClient, QueryClientProvider} from 'react-query';
+
 
 function App() {
   const {currentUser} = useContext(AuthContext);
 
   const { darkMode } = useContext(DarkModeContext);
 
+  // Menggunakan library react-query untuk fetch data dari komponen
+  const queryClient = new QueryClient();
+
   const Layout = () => {
     return (
-      <div className={`theme-${darkMode ? "light" : "dark"}`}>
-        <Navbar />
-        <div style={{ display: "flex" }}>
-          <SideBar />
-          <div style={{ flex: 6 }}>
-            <Outlet />
+      <QueryClientProvider client={queryClient}>
+        <div className={`theme-${darkMode ? "light" : "dark"}`}>
+          <Navbar />
+          <div style={{ display: "flex" }}>
+            <SideBar />
+            <div style={{ flex: 6 }}>
+              <Outlet />
+            </div>
+            <RightBar />
           </div>
-          <RightBar />
         </div>
-      </div>
+      </QueryClientProvider>
+
     );
   };
 

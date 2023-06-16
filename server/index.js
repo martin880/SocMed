@@ -28,5 +28,5 @@ app.use("/api/comments", commentRoutes);
 app.use("/api/likes", likeRoutes);
 
 app.listen(port, () => {
-    console.log('Its work');
+    console.log(`Its work, server running on port ${port}`);
 })
