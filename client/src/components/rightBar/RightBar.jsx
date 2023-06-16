@@ -12,7 +12,7 @@ const RightBar = () => {
               <Flex className="user" display={'flex'} alignItems={'flex-start'} justifyContent={'space-between'} m={'20px'}>
                 <Flex className="userInfo" display={'flex'} alignItems={'center'} gap={'20px'} pos={'relative'}>
                 <Image
-                    src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                    src="https://images.pexels.com/photos/2709388/pexels-photo-2709388.jpeg?auto=compress&cs=tinysrgb&w=600"
                     alt=""
                     w={'40px'} h={'40px'} borderRadius={'50%'} objectFit={'cover'}
                   />
@@ -24,7 +24,7 @@ const RightBar = () => {
               <Flex className="user" display={'flex'} alignItems={'flex-start'} justifyContent={'space-between'} m={'20px'}>
                 <Flex className="userInfo" display={'flex'} alignItems={'center'} gap={'20px'} pos={'relative'}>
                 <Image
-                    src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                    src="https://images.pexels.com/photos/2709388/pexels-photo-2709388.jpeg?auto=compress&cs=tinysrgb&w=600"
                     alt=""
                     w={'40px'} h={'40px'} borderRadius={'50%'} objectFit={'cover'}
                   />
@@ -36,7 +36,7 @@ const RightBar = () => {
               <Flex className="user" display={'flex'} alignItems={'flex-start'} justifyContent={'space-between'} m={'20px'}>
                 <Flex className="userInfo" display={'flex'} alignItems={'center'} gap={'20px'} pos={'relative'}>
                 <Image
-                    src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                    src="https://images.pexels.com/photos/2709388/pexels-photo-2709388.jpeg?auto=compress&cs=tinysrgb&w=600"
                     alt=""
                     w={'40px'} h={'40px'} borderRadius={'50%'} objectFit={'cover'}
                   />
@@ -48,7 +48,7 @@ const RightBar = () => {
               <Flex className="user" display={'flex'} alignItems={'flex-start'} justifyContent={'space-between'} m={'20px'}>
                 <Flex className="userInfo" display={'flex'} alignItems={'center'} gap={'20px'} pos={'relative'}>
                 <Image
-                    src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                    src="https://images.pexels.com/photos/2709388/pexels-photo-2709388.jpeg?auto=compress&cs=tinysrgb&w=600"
                     alt=""
                     w={'40px'} h={'40px'} borderRadius={'50%'} objectFit={'cover'}
                   />
@@ -60,7 +60,7 @@ const RightBar = () => {
               <Flex className="user" display={'flex'} alignItems={'flex-start'} justifyContent={'space-between'} m={'20px'}>
                 <Flex className="userInfo" display={'flex'} alignItems={'center'} gap={'20px'} pos={'relative'}>
                 <Image
-                    src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                    src="https://images.pexels.com/photos/2709388/pexels-photo-2709388.jpeg?auto=compress&cs=tinysrgb&w=600"
                     alt=""
                     w={'40px'} h={'40px'} borderRadius={'50%'} objectFit={'cover'}
                   />
