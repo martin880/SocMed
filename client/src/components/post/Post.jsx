@@ -5,15 +5,39 @@ import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Link } from "react-router-dom";
 import Comments from "../comments/Comments";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import moment from 'moment';
 import {Flex, Image, Stack, Text, VStack} from "@chakra-ui/react";
+import { useQuery, useQueryClient, useMutation } from 'react-query';
+import { makeRequest } from "../../axios";
+import { AuthContext } from "../../context/authContext";
 
 const Post = ({ post }) => {
   const [commentOpen, setCommentOpen] = useState(false);
 
-  //TEMPORARY
-  const liked = false;
+  const {currentUser} = useContext(AuthContext);
+
+  const { isLoading, error, data } = useQuery(['likes', post.id], () =>
+  makeRequest.get("/likes?postId = " + post.id).then((res) => {
+    return res.data;
+  })
+)
+
+const queryClient = useQueryClient();
+  
+  const mutation = useMutation((liked) => {
+    if(liked) return makeRequest.delete("/likes?postId = " + post.id);
+    return makeRequest.post("/likes", {postId: post.id});
+  }, {
+    onSuccess: () => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries(['likes']);
+    },
+  });
+
+  const handleLike = () => {
+    mutation.mutate(data.includes(currentUser.id));
+  }
 
   return (
     <Flex boxShadow={'lg'} borderRadius={'20px'} bgColor={'#222'} color={'lightgrey'}>
@@ -47,8 +71,8 @@ const Post = ({ post }) => {
 
         <Flex display={'flex'} alignItems={'center'} gap={'20px'}>
           <Flex display={'flex'} alignItems={'center'} gap={'10px'} cursor={'pointer'} fontSize={'14px'}>
-            {liked ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon />}
-            12 Likes
+            {isLoading ? "loading" : data.includes(currentUser.id) ? (<FavoriteOutlinedIcon onClick={handleLike} style={{color:"red"}}/>) : (<FavoriteBorderOutlinedIcon onClick={handleLike} />)}
+            {data} Likes
           </Flex>
           <Flex display={'flex'} alignItems={'center'} gap={'10px'} cursor={'pointer'} fontSize={'14px'} onClick={() => setCommentOpen(!commentOpen)}>
             <TextsmsOutlinedIcon />
