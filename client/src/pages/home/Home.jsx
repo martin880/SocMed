@@ -6,7 +6,8 @@ import { Box } from "@chakra-ui/react"
 
 const Home = () => {
   return (
-    <Box className="home">
+    <Box className="home"
+    py={'20px'} px={'70px'} bgColor={'#333'}>
       <Stories/>
       <Share/>
       <Posts/>

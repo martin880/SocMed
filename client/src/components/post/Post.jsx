@@ -1,4 +1,3 @@
-import "./post.scss";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import TextsmsOutlinedIcon from "@mui/icons-material/TextsmsOutlined";
@@ -7,6 +6,8 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Link } from "react-router-dom";
 import Comments from "../comments/Comments";
 import { useState } from "react";
+import moment from 'moment';
+import {Flex, Image, Stack, Text, VStack} from "@chakra-ui/react";
 
 const Post = ({ post }) => {
   const [commentOpen, setCommentOpen] = useState(false);
@@ -15,44 +16,53 @@ const Post = ({ post }) => {
   const liked = false;
 
   return (
-    <div className="post">
-      <div className="container">
-        <div className="user">
-          <div className="userInfo">
-            <img src={post.profilePic} alt="" />
-            <div className="details">
-              <Link
-                to={`/profile/${post.userId}`}
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
-                <span className="name">{post.name}</span>
-              </Link>
-              <span className="date">1 min ago</span>
-            </div>
-          </div>
-          <MoreHorizIcon />
-        </div>
-        <div className="content">
-          <p>{post.desc}</p>
-          <img src={"./upload/" + post.img} alt="" />
-        </div>
-        <div className="info">
-          <div className="item">
+    <Flex boxShadow={'lg'} borderRadius={'20px'} bgColor={'#222'} color={'lightgrey'}>
+      <Flex p={'20px'} w={'100%'}>
+        <Stack display={'flex'} w={'100%'}>
+            <Flex display={'flex'} alignItems={'center'} justifyContent={'space-between'}>
+              <Flex display={'flex'} gap={'20px'}>
+                <Image src={post.profilePic} alt="" w={'40px'} h={'40px'} borderRadius={'50%'} objectFit={'cover'}/>
+                <Flex display={'flex'} flexDirection={'column'}>
+                  <Link
+                    to={`/profile/${post.userId}`}
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    <span style={{fontWeight:"bold"}}>{post.name}</span>
+                  </Link>
+                  <span style={{fontWeight:"12px"}}>{moment(post.createdAt).fromNow()}</span>
+                </Flex>
+              </Flex>
+              <MoreHorizIcon />
+            </Flex>
+        <Flex m={'20px'}>
+          <Stack w={'100%'}>
+          <VStack display={'flex'} alignItems={'start'}>
+            <Text as={'p'}>{post.desc}</Text>
+          </VStack>
+          <VStack display={'flex'} alignItems={'center'} justifyContent={'center'}>
+            <Image src={"./upload/" + post.img} alt="" w={'100%'} maxH={'500px'} objectFit={'cover'} marginTop={'20px'} />
+          </VStack>
+          </Stack>
+        </Flex>
+
+        <Flex display={'flex'} alignItems={'center'} gap={'20px'}>
+          <Flex display={'flex'} alignItems={'center'} gap={'10px'} cursor={'pointer'} fontSize={'14px'}>
             {liked ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon />}
             12 Likes
-          </div>
-          <div className="item" onClick={() => setCommentOpen(!commentOpen)}>
+          </Flex>
+          <Flex display={'flex'} alignItems={'center'} gap={'10px'} cursor={'pointer'} fontSize={'14px'} onClick={() => setCommentOpen(!commentOpen)}>
             <TextsmsOutlinedIcon />
             12 Comments
-          </div>
-          <div className="item">
+          </Flex>
+          <Flex display={'flex'} alignItems={'center'} gap={'10px'} cursor={'pointer'} fontSize={'14px'}>
             <ShareOutlinedIcon />
             Share
-          </div>
-        </div>
+          </Flex>
+        </Flex>
         {commentOpen && <Comments />}
-      </div>
-    </div>
+        </Stack>
+      </Flex>
+    </Flex>
   );
 };
 
