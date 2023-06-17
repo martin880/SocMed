@@ -12,10 +12,15 @@ import Posts from "../../components/posts/Posts";
 import { useQuery, useQueryClient, useMutation } from 'react-query';
 import { makeRequest } from "../../axios";
 import { useLocation } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext";
 
 const Profile = () => {
 
-  const userId = useLocation().pathname.split("/")[2];
+
+  const {currentUser} = useContext(AuthContext);
+
+  const userId = parseInt(useLocation().pathname.split("/")[2]);
 
   const { isLoading, error, data } = useQuery(["user"], () =>
   makeRequest.get("/users/find/" + userId).then((res) => {
@@ -25,14 +30,16 @@ const Profile = () => {
 
   return (
     <div className="profile">
-      <div className="images">
+      { isLoading ? "Loading" :
+        <>
+        <div className="images">
         <img
-          src="https://images.pexels.com/photos/733148/pexels-photo-733148.jpeg?auto=compress&cs=tinysrgb&w=600"
+          src={data.coverPic}
           alt=""
           className="cover"
         />
         <img
-          src="https://images.pexels.com/photos/3732652/pexels-photo-3732652.jpeg?auto=compress&cs=tinysrgb&w=600"
+          src={data.profilePic}
           alt=""
           className="profilePic"
         />
@@ -57,16 +64,16 @@ const Profile = () => {
             </a>
           </div>
           <div className="center">
-            <span>{""}</span>
+            <span>{data.name}</span>
             <div className="info">
               <div className="item">
-                {/* <PlaceIcon /> */}
-                <span>{""}</span>
+                <PlaceIcon />
+                <span>{data.city}</span>
               </div>
               <div className="item">
-                {/* <LanguageIcon /> */}
-                <span>{""}</span>
-            <button>follow</button>
+                <LanguageIcon />
+                <span>{data.website}</span>
+            {userId === currentUser.id ? <button>update</button> : <button>follow</button>}
               </div>
             </div>
           </div>
@@ -77,6 +84,8 @@ const Profile = () => {
         </div>
       <Posts/>
       </div>
+      </>
+      }
     </div>
   );
 };
