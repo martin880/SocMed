@@ -71,10 +71,12 @@ const queryClient = useQueryClient();
 
         <Flex display={'flex'} alignItems={'center'} gap={'20px'}>
           <Flex display={'flex'} alignItems={'center'} gap={'10px'} cursor={'pointer'} fontSize={'14px'}>
-            {isLoading ? "loading" : data.includes(currentUser.id) ? (<FavoriteOutlinedIcon onClick={handleLike} style={{color:"red"}}/>) : (<FavoriteBorderOutlinedIcon onClick={handleLike} />)}
-            {data} Likes
+            {isLoading ? "loading" : data.includes(currentUser.id) ? 
+            (<FavoriteOutlinedIcon onClick={handleLike} style={{color:"red"}}/>) : (<FavoriteBorderOutlinedIcon onClick={handleLike} />)}
+            {data?.map.length} Likes
           </Flex>
-          <Flex display={'flex'} alignItems={'center'} gap={'10px'} cursor={'pointer'} fontSize={'14px'} onClick={() => setCommentOpen(!commentOpen)}>
+          <Flex display={'flex'} alignItems={'center'} gap={'10px'} cursor={'pointer'} fontSize={'14px'} 
+          onClick={() => setCommentOpen(!commentOpen)}>
             <TextsmsOutlinedIcon />
             12 Comments
           </Flex>

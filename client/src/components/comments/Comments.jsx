@@ -40,7 +40,7 @@ const Comments = ({postId}) => {
         <Image src={currentUser.profilePic} alt="" w={'40px'} h={'40px'} borderRadius={'50%'} objectFit={'cover'} />
         <Input type="text" placeholder="write a comment" flex={'5'} p={'10px'} border={'1px solid gray'} bgColor={'transparent'} color={'lightgray'}
          value={desc} onChange={(e) => setDesc(e.target.value)}/>
-        <Button border={'none'} bgColor={'lightblue'} color={'white'} 
+        <Button border={'none'} colorScheme="messenger" color={'white'} 
         p={'10px'} cursor={'pointer'} borderRadius={'3px'} onClick={handleClick}>Send</Button>
       </Flex>
       {isLoading ? "loading" : data.map((comment) => (

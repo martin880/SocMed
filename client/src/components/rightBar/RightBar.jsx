@@ -1,79 +1,204 @@
-import {Flex, Image, Text,Stack, VStack} from "@chakra-ui/react";
+import "./rightBar.scss";
 
 const RightBar = () => {
   return (
-    <Flex className="rightBar" flex={'3'} display={'flex'} position={'sticky'} top={'50px'} h="calc(100vh - 50px)"
-    overflow={'scroll'} bgColor={'#333'} sx={{ "&::-webkit-scrollbar": { display: "none" }}}>
-      <Flex className="container" p={'20px'}>
-        <Flex className="item" boxShadow={'lg'} p={'10px'} bgColor={"#222"}  display={'flex'} w={'100%'}>
-          <Stack>
-            <VStack>
-              <Text style={{fontWeight:"normal", color:"lightgray"}}>Online Friends</Text>
-              <Flex className="user" display={'flex'} alignItems={'flex-start'} justifyContent={'space-between'} m={'20px'}>
-                <Flex className="userInfo" display={'flex'} alignItems={'center'} gap={'20px'} pos={'relative'}>
-                <Image
-                    src="https://images.pexels.com/photos/2709388/pexels-photo-2709388.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    alt=""
-                    w={'40px'} h={'40px'} borderRadius={'50%'} objectFit={'cover'}
-                  />
-                  <Flex className="online" w={'12px'} h={'12px'} borderRadius={'50%'}
-                  bgColor={'limegreen'} pos={'absolute'} top={0} left={'30px'} />
-                  <Text style={{fontWeight:"bold", color:"lightgray"}}>Netizen</Text>
-                </Flex>
-              </Flex>
-              <Flex className="user" display={'flex'} alignItems={'flex-start'} justifyContent={'space-between'} m={'20px'}>
-                <Flex className="userInfo" display={'flex'} alignItems={'center'} gap={'20px'} pos={'relative'}>
-                <Image
-                    src="https://images.pexels.com/photos/2709388/pexels-photo-2709388.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    alt=""
-                    w={'40px'} h={'40px'} borderRadius={'50%'} objectFit={'cover'}
-                  />
-                  <Flex className="online" w={'12px'} h={'12px'} borderRadius={'50%'}
-                  bgColor={'limegreen'} pos={'absolute'} top={0} left={'30px'} />
-                  <Text style={{fontWeight:"bold", color:"lightgray"}}>Netizen</Text>
-                </Flex>
-              </Flex>
-              <Flex className="user" display={'flex'} alignItems={'flex-start'} justifyContent={'space-between'} m={'20px'}>
-                <Flex className="userInfo" display={'flex'} alignItems={'center'} gap={'20px'} pos={'relative'}>
-                <Image
-                    src="https://images.pexels.com/photos/2709388/pexels-photo-2709388.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    alt=""
-                    w={'40px'} h={'40px'} borderRadius={'50%'} objectFit={'cover'}
-                  />
-                  <Flex className="online" w={'12px'} h={'12px'} borderRadius={'50%'}
-                  bgColor={'limegreen'} pos={'absolute'} top={0} left={'30px'} />
-                  <Text style={{fontWeight:"bold", color:"lightgray"}}>Netizen</Text>
-                </Flex>
-              </Flex>
-              <Flex className="user" display={'flex'} alignItems={'flex-start'} justifyContent={'space-between'} m={'20px'}>
-                <Flex className="userInfo" display={'flex'} alignItems={'center'} gap={'20px'} pos={'relative'}>
-                <Image
-                    src="https://images.pexels.com/photos/2709388/pexels-photo-2709388.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    alt=""
-                    w={'40px'} h={'40px'} borderRadius={'50%'} objectFit={'cover'}
-                  />
-                  <Flex className="online" w={'12px'} h={'12px'} borderRadius={'50%'}
-                  bgColor={'limegreen'} pos={'absolute'} top={0} left={'30px'} />
-                  <Text style={{fontWeight:"bold", color:"lightgray"}}>Netizen</Text>
-                </Flex>
-              </Flex>
-              <Flex className="user" display={'flex'} alignItems={'flex-start'} justifyContent={'space-between'} m={'20px'}>
-                <Flex className="userInfo" display={'flex'} alignItems={'center'} gap={'20px'} pos={'relative'}>
-                <Image
-                    src="https://images.pexels.com/photos/2709388/pexels-photo-2709388.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    alt=""
-                    w={'40px'} h={'40px'} borderRadius={'50%'} objectFit={'cover'}
-                  />
-                  <Flex className="online" w={'12px'} h={'12px'} borderRadius={'50%'}
-                  bgColor={'limegreen'} pos={'absolute'} top={0} left={'30px'} />
-                  <Text style={{fontWeight:"bold", color:"lightgray"}}>Netizen</Text>
-                </Flex>
-              </Flex>
-            </VStack>
-          </Stack>
-        </Flex>
-      </Flex>
-    </Flex>
+    <div className="rightBar">
+      <div className="container">
+        <div className="item">
+          <span>Suggestions For You</span>
+          <div className="user">
+            <div className="userInfo">
+              <img
+                src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt=""
+              />
+              <span>Jane Doe</span>
+            </div>
+            <div className="buttons">
+              <button>follow</button>
+              <button>dismiss</button>
+            </div>
+          </div>
+          <div className="user">
+            <div className="userInfo">
+              <img
+                src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt=""
+              />
+              <span>Jane Doe</span>
+            </div>
+            <div className="buttons">
+              <button>follow</button>
+              <button>dismiss</button>
+            </div>
+          </div>
+        </div>
+        <div className="item">
+          <span>Latest Activities</span>
+          <div className="user">
+            <div className="userInfo">
+              <img
+                src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt=""
+              />
+              <p>
+                <span>Jane Doe</span> changed their cover picture
+              </p>
+            </div>
+            <span>1 min ago</span>
+          </div>
+          <div className="user">
+            <div className="userInfo">
+              <img
+                src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt=""
+              />
+              <p>
+                <span>Jane Doe</span> changed their cover picture
+              </p>
+            </div>
+            <span>1 min ago</span>
+          </div>
+          <div className="user">
+            <div className="userInfo">
+              <img
+                src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt=""
+              />
+              <p>
+                <span>Jane Doe</span> changed their cover picture
+              </p>
+            </div>
+            <span>1 min ago</span>
+          </div>
+          <div className="user">
+            <div className="userInfo">
+              <img
+                src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt=""
+              />
+              <p>
+                <span>Jane Doe</span> changed their cover picture
+              </p>
+            </div>
+            <span>1 min ago</span>
+          </div>
+        </div>
+        <div className="item">
+          <span>Online Friends</span>
+          <div className="user">
+            <div className="userInfo">
+              <img
+                src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt=""
+              />
+              <div className="online" />
+              <span>Jane Doe</span>
+            </div>
+          </div>
+          <div className="user">
+            <div className="userInfo">
+              <img
+                src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt=""
+              />
+              <div className="online" />
+              <span>Jane Doe</span>
+            </div>
+          </div>
+          <div className="user">
+            <div className="userInfo">
+              <img
+                src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt=""
+              />
+              <div className="online" />
+              <span>Jane Doe</span>
+            </div>
+          </div>
+          <div className="user">
+            <div className="userInfo">
+              <img
+                src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt=""
+              />
+              <div className="online" />
+              <span>Jane Doe</span>
+            </div>
+          </div>
+          <div className="user">
+            <div className="userInfo">
+              <img
+                src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt=""
+              />
+              <div className="online" />
+              <span>Jane Doe</span>
+            </div>
+          </div>
+          <div className="user">
+            <div className="userInfo">
+              <img
+                src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt=""
+              />
+              <div className="online" />
+              <span>Jane Doe</span>
+            </div>
+          </div>
+          <div className="user">
+            <div className="userInfo">
+              <img
+                src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt=""
+              />
+              <div className="online" />
+              <span>Jane Doe</span>
+            </div>
+          </div>
+          <div className="user">
+            <div className="userInfo">
+              <img
+                src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt=""
+              />
+              <div className="online" />
+              <span>Jane Doe</span>
+            </div>
+          </div>
+          <div className="user">
+            <div className="userInfo">
+              <img
+                src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt=""
+              />
+              <div className="online" />
+              <span>Jane Doe</span>
+            </div>
+          </div>
+          <div className="user">
+            <div className="userInfo">
+              <img
+                src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt=""
+              />
+              <div className="online" />
+              <span>Jane Doe</span>
+            </div>
+          </div>
+          <div className="user">
+            <div className="userInfo">
+              <img
+                src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt=""
+              />
+              <div className="online" />
+              <span>Jane Doe</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

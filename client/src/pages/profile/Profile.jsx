@@ -8,19 +8,31 @@ import PlaceIcon from "@mui/icons-material/Place";
 import LanguageIcon from "@mui/icons-material/Language";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import Posts from "../../components/posts/Posts"
+import Posts from "../../components/posts/Posts";
+import { useQuery, useQueryClient, useMutation } from 'react-query';
+import { makeRequest } from "../../axios";
+import { useLocation } from "react-router-dom";
 
 const Profile = () => {
+
+  const userId = useLocation().pathname.split("/")[2];
+
+  const { isLoading, error, data } = useQuery(['user'], () =>
+  makeRequest.get("/users/find = " + userId).then((res) => {
+    return res.data;
+  }));
+
+  console.log(data);
   return (
     <div className="profile">
       <div className="images">
         <img
-          src="https://images.pexels.com/photos/3293148/pexels-photo-3293148.jpeg?auto=compress&cs=tinysrgb&w=600"
+          src="https://images.pexels.com/photos/13440765/pexels-photo-13440765.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
           alt=""
           className="cover"
         />
         <img
-          src="https://images.pexels.com/photos/457418/pexels-photo-457418.jpeg?auto=compress&cs=tinysrgb&w=600"
+          src="https://images.pexels.com/photos/14028501/pexels-photo-14028501.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
           alt=""
           className="profilePic"
         />
@@ -45,15 +57,15 @@ const Profile = () => {
             </a>
           </div>
           <div className="center">
-            <span>Username</span>
+            <span>Jane Doe</span>
             <div className="info">
               <div className="item">
                 <PlaceIcon />
-                <span>ID</span>
+                <span>IDN</span>
               </div>
               <div className="item">
                 <LanguageIcon />
-                <span>test@email</span>
+                <span>test@email.com</span>
               </div>
             </div>
             <button>follow</button>
