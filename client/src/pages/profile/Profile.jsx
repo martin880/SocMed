@@ -17,22 +17,22 @@ const Profile = () => {
 
   const userId = useLocation().pathname.split("/")[2];
 
-  const { isLoading, error, data } = useQuery(['user'], () =>
-  makeRequest.get("/users/find = " + userId).then((res) => {
+  const { isLoading, error, data } = useQuery(["user"], () =>
+  makeRequest.get("/users/find/" + userId).then((res) => {
     return res.data;
   }));
 
-  console.log(data);
+
   return (
     <div className="profile">
       <div className="images">
         <img
-          src="https://images.pexels.com/photos/13440765/pexels-photo-13440765.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          src="https://images.pexels.com/photos/733148/pexels-photo-733148.jpeg?auto=compress&cs=tinysrgb&w=600"
           alt=""
           className="cover"
         />
         <img
-          src="https://images.pexels.com/photos/14028501/pexels-photo-14028501.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+          src="https://images.pexels.com/photos/3732652/pexels-photo-3732652.jpeg?auto=compress&cs=tinysrgb&w=600"
           alt=""
           className="profilePic"
         />
@@ -57,18 +57,18 @@ const Profile = () => {
             </a>
           </div>
           <div className="center">
-            <span>Jane Doe</span>
+            <span>{""}</span>
             <div className="info">
               <div className="item">
-                <PlaceIcon />
-                <span>IDN</span>
+                {/* <PlaceIcon /> */}
+                <span>{""}</span>
               </div>
               <div className="item">
-                <LanguageIcon />
-                <span>test@email.com</span>
+                {/* <LanguageIcon /> */}
+                <span>{""}</span>
+            <button>follow</button>
               </div>
             </div>
-            <button>follow</button>
           </div>
           <div className="right">
             <EmailOutlinedIcon />
